@@ -1,0 +1,147 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Professional AI Interview App Design System */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+@layer base {
+  :root {
+    /* Core Colors - Professional Blue/Purple Theme */
+    --background: 0 0% 100%;
+    --foreground: 225 71% 7%;
+    
+    --card: 0 0% 100%;
+    --card-foreground: 225 71% 7%;
+    
+    --popover: 0 0% 100%;
+    --popover-foreground: 225 71% 7%;
+    
+    /* Primary - Professional Blue */
+    --primary: 235 77% 55%;
+    --primary-light: 235 77% 65%;
+    --primary-dark: 235 77% 45%;
+    --primary-foreground: 0 0% 100%;
+    
+    /* Secondary - Soft Purple */
+    --secondary: 245 60% 96%;
+    --secondary-foreground: 235 77% 45%;
+    
+    /* Accent - Purple Gradient */
+    --accent: 260 75% 94%;
+    --accent-foreground: 260 75% 30%;
+    
+    /* Neutral Grays */
+    --muted: 240 5% 96%;
+    --muted-foreground: 240 4% 46%;
+    
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
+    
+    --border: 240 6% 90%;
+    --input: 240 6% 90%;
+    --ring: 235 77% 55%;
+    
+    --radius: 8px;
+    
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(235 77% 55%) 0%, hsl(260 75% 65%) 100%);
+    --gradient-secondary: linear-gradient(135deg, hsl(245 60% 96%) 0%, hsl(260 75% 94%) 100%);
+    --gradient-hero: linear-gradient(135deg, hsl(235 77% 55%) 0%, hsl(260 75% 55%) 50%, hsl(280 70% 60%) 100%);
+    
+    /* Shadows */
+    --shadow-soft: 0 2px 8px hsl(235 77% 55% / 0.1);
+    --shadow-medium: 0 4px 20px hsl(235 77% 55% / 0.15);
+    --shadow-strong: 0 8px 30px hsl(235 77% 55% / 0.2);
+    
+    /* Chat specific colors */
+    --chat-user: 235 77% 55%;
+    --chat-bot: 240 5% 96%;
+    --chat-user-foreground: 0 0% 100%;
+    --chat-bot-foreground: 225 71% 7%;
+    
+    /* Success/Warning */
+    --success: 142 76% 36%;
+    --success-foreground: 0 0% 100%;
+    --warning: 38 92% 50%;
+    --warning-foreground: 0 0% 100%;
+  }
+
+  .dark {
+    --background: 225 71% 7%;
+    --foreground: 240 5% 96%;
+    
+    --card: 225 71% 9%;
+    --card-foreground: 240 5% 96%;
+    
+    --popover: 225 71% 9%;
+    --popover-foreground: 240 5% 96%;
+    
+    --primary: 235 77% 60%;
+    --primary-light: 235 77% 70%;
+    --primary-dark: 235 77% 50%;
+    --primary-foreground: 225 71% 7%;
+    
+    --secondary: 225 71% 12%;
+    --secondary-foreground: 240 5% 96%;
+    
+    --accent: 225 71% 15%;
+    --accent-foreground: 235 77% 60%;
+    
+    --muted: 225 71% 12%;
+    --muted-foreground: 240 4% 64%;
+    
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
+    
+    --border: 225 71% 15%;
+    --input: 225 71% 15%;
+    --ring: 235 77% 60%;
+    
+    /* Dark mode gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(235 77% 60%) 0%, hsl(260 75% 70%) 100%);
+    --gradient-secondary: linear-gradient(135deg, hsl(225 71% 12%) 0%, hsl(225 71% 15%) 100%);
+    --gradient-hero: linear-gradient(135deg, hsl(235 77% 60%) 0%, hsl(260 75% 60%) 50%, hsl(280 70% 65%) 100%);
+    
+    --shadow-soft: 0 2px 8px hsl(0 0% 0% / 0.3);
+    --shadow-medium: 0 4px 20px hsl(0 0% 0% / 0.4);
+    --shadow-strong: 0 8px 30px hsl(0 0% 0% / 0.5);
+    
+    --chat-user: 235 77% 60%;
+    --chat-bot: 225 71% 12%;
+    --chat-user-foreground: 225 71% 7%;
+    --chat-bot-foreground: 240 5% 96%;
+    
+    --success: 142 76% 36%;
+    --success-foreground: 0 0% 100%;
+    --warning: 38 92% 50%;
+    --warning-foreground: 0 0% 100%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans;
+    font-feature-settings: 'rlig' 1, 'calt' 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+@layer components {
+  .gradient-text {
+    @apply bg-gradient-primary bg-clip-text text-transparent;
+  }
+  
+  .glass-effect {
+    @apply bg-white/10 backdrop-blur-md border border-white/20;
+  }
+  
+  .hover-lift {
+    @apply transition-all duration-200 hover:translate-y-[-2px] hover:shadow-medium;
+  }
+}
