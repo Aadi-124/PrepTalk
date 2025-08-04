@@ -9,6 +9,8 @@ import { ThemeToggle } from '@/components/ui/theme-toggle';
 import { LoadingSpinner } from '@/components/ui/loading-spinner';
 import { AppLayout } from '@/layouts/AppLayout';
 import heroImage from '@/assets/hero-bg.jpg';
+import { registerUser } from '@/APIService/PrepTalkAPI';
+import { toast } from 'sonner';
 
 export const Register = () => {
   const [formData, setFormData] = useState({
@@ -58,14 +60,26 @@ export const Register = () => {
     
     if (!validateForm()) return;
     
-    setIsLoading(true);
+    // setIsLoading(true);
     
     // Simulate API call
-    await new Promise(resolve => setTimeout(resolve, 1500));
+    let user = {
+      fullName:formData.name,
+      email:formData.email,
+      password:formData.password
+    };  
     
-    // Mock registration success
+    registerUser(user).then((response)=>{
+      toast.success("Registered Successfully!");
+      navigate("/login");
+    }).catch((error)=>{
+        toast.error("Registration Failed");
+      console.log(error);
+    });
+
+    // Mock registration success)
     localStorage.setItem('isAuthenticated', 'true');
-    navigate('/chat');
+    // navigate('/chat');
   };
 
   return (
@@ -207,6 +221,7 @@ export const Register = () => {
                     type="submit" 
                     className="w-full h-11 bg-gradient-primary hover:opacity-90 transition-opacity"
                     disabled={isLoading}
+                    onClick={handleSubmit}
                   >
                     {isLoading ? (
                       <LoadingSpinner size="sm" className="text-white" />

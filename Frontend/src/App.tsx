@@ -9,7 +9,7 @@ import { Login } from "./pages/Login";
 import { Register } from "./pages/Register";
 import { Chat } from "./pages/Chat";
 import { Profile } from "./pages/Profile";
-import NotFound from "./pages/NotFound";
+import NotFound from "./pages/NotFound";  
 
 const queryClient = new QueryClient();
 
@@ -17,7 +17,7 @@ const App = () => (
   <QueryClientProvider client={queryClient}>
     <ThemeProvider>
       <TooltipProvider>
-        <Toaster />
+        
         <Sonner />
         <BrowserRouter>
           <Routes>

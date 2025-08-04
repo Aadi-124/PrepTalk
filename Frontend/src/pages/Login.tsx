@@ -9,6 +9,9 @@ import { ThemeToggle } from '@/components/ui/theme-toggle';
 import { LoadingSpinner } from '@/components/ui/loading-spinner';
 import { AppLayout } from '@/layouts/AppLayout';
 import heroImage from '@/assets/hero-bg.jpg';
+import { register } from 'module';
+import { loginUser } from '@/APIService/PrepTalkAPI';
+import { toast } from 'sonner';
 
 export const Login = () => {
   const [email, setEmail] = useState('');
@@ -19,14 +22,24 @@ export const Login = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setIsLoading(true);
+    // setIsLoading(true);
     
     // Simulate API call
-    await new Promise(resolve => setTimeout(resolve, 1500));
+    const user = {
+      email:email,
+      password:password
+    }
+    loginUser(user).then((response)=>{
+      console.log(response);
+      toast.success("Logged In!");
+      navigate('/chat');
+    }).catch((error)=>{
+      toast.error("Login Failed!");
+    })
     
     // Mock authentication
     localStorage.setItem('isAuthenticated', 'true');
-    navigate('/chat');
+    // navigate('/chat');
   };
 
   return (
@@ -42,7 +55,7 @@ export const Login = () => {
           <div className="relative z-10 flex flex-col justify-center items-center text-white p-12">
             <div className="text-center max-w-md">
               <Brain className="h-16 w-16 mx-auto mb-6" />
-              <h1 className="text-4xl font-bold mb-4">AI Interview Coach</h1>
+              <h1 className="text-4xl font-bold mb-4">PrepTalk</h1>
               <p className="text-xl opacity-90">
                 Master your interviews with AI-powered practice sessions and real-time feedback.
               </p>
@@ -119,6 +132,7 @@ export const Login = () => {
                     type="submit" 
                     className="w-full h-11 bg-gradient-primary hover:opacity-90 transition-opacity"
                     disabled={isLoading}
+                    onClick={handleSubmit}
                   >
                     {isLoading ? (
                       <LoadingSpinner size="sm" className="text-white" />

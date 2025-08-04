@@ -145,3 +145,9 @@
     @apply transition-all duration-200 hover:translate-y-[-2px] hover:shadow-medium;
   }
 }
+
+
+
+.cont{
+  color: #34C759;
+}
